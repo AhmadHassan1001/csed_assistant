@@ -16,9 +16,15 @@ Run the following command to start the assistant
 python summarize.py {path to the lecture file("lect1.pdf")}
 ```
 This will make summarization in md format and pdf.
+- You can add your own **edits** to markdown file and export it as pdf using command:
+```bash
+mdpdf -o summary.pdf summary.md
+```
 
 ## Testing
 You can find test results in `test/`
 
 ## Disclaimer
 This is a simple tool and may not work perfectly for all lectures. It is recommended to review the output and make necessary changes.
+
+**Enjoy!**
