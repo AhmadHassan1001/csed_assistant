@@ -1,216 +1,234 @@
-## Computer Networks - Lecture 01: Introduction
+# Computer Networks Lecture 01: Introduction
 
-### Course Information
+## Course Outline
 
-* **Instructor:** Prof. Dr. Sahar M. Ghanem, Associate Professor
-* **Department:** Computer and Systems Engineering Department
-* **University:** Faculty of Engineering, Alexandria University
 * **Textbook:** Computer Networking: A Top-Down Approach, 8th ed., Kurose & Ross
-
-### Course Outline
-
 * **Grading:**
-    * Attendance & Participation: 5-7%
-    * Assignments & Quizzes: 40%
+    * Attendance & participation: 5-7%
+    * Assignments & quizzes: 40%
     * Midterm: 15%
     * Final: 40%
-* **Join with Code:** 142tcab
-* **Course Materials & Discussions:** MS Teams
-* **Teaching Assistant:** Eng. Mohamed Essam
+* **Join with code:** 142tcab
+* **Course materials and discussions will be on MS Teams.**
+* **TA:** Eng. Mohamed Essam
 
-### Chapter 1: Computer Networks and the Internet
+## Chapter 1: Computer Networks and the Internet
 
-#### Outline
+### Outline
 
-* What is the Internet?
+* What Is the Internet?
 * The Network Edge
 * The Network Core
 * Delay, Loss, and Throughput in Packet-Switched Networks
 * Protocol Layers and Their Service Models
 
-#### What is the Internet?
+### What Is the Internet?
 
-* The Internet is a **network of networks**.
-* We will use the **public Internet** as the basis for our discussion. 
-
-#### Nuts-and-Bolts Description
-
-* The Internet interconnects **billions of computing devices** worldwide.
+* The Internet is a **network of networks**, with interconnected **billions of computing devices** throughout the world.
 * These devices are called **hosts** or **end systems**.
-* Estimated number of devices: 18 billion in 2017, reaching **28.5 billion by 2022**.
+* By some estimates, there were about 18 billion devices connected to the Internet in 2017, and the number will reach **28.5 billion by 2022**.
 * End systems are connected by a network of **communication links** and **packet switches**.
-* **Packet switches** forward packets received on incoming links to outgoing links.
-* Common types of packet switches: **routers** and **link-layer switches**.
-* The path a packet takes is called a **route** or **path**.
-* **Internet Service Providers (ISPs)** provide access to the Internet.
-* ISPs themselves are **networks** of packet switches and links.
-* Devices on the Internet run **protocols**.
-* Key protocols: **Transmission Control Protocol (TCP)** and **Internet Protocol (IP)**.
+* A **packet switch** takes a packet arriving on one of its incoming communication links and forwards that packet on one of its outgoing communication links.
+* The **transmission rate** of a link is measured in **bits/second (bps)**.
+* The two most prominent types of packet switches in today's Internet are **routers** and **link-layer switches**.
+* The sequence of communication links and packet switches traversed by a packet from the sending end system to the receiving end system is known as a **route** or **path** through the network.
+* End systems access the Internet through **Internet Service Providers (ISPs)**.
+* Each ISP is in itself a **network** of packet switches and communication links.
+* End systems, packet switches, and other pieces of the Internet run **protocols**.
+* **Transmission Control Protocol (TCP)** and **Internet Protocol (IP)** are two of the most important protocols in the Internet.
+* The Internet's principal protocols are collectively known as **TCP/IP**.
 * **Internet standards** are developed by the **Internet Engineering Task Force (IETF)**.
-* IETF standards documents are called **Requests for Comments (RFCs)**.
-*  There are nearly **9000 RFCs**.
-* Other organizations also specify standards, such as the **IEEE 802 LAN Standards Committee**.
+* IETF standards documents are called **requests for comments (RFCs)**.
+    * There are currently nearly 9000 RFCs.
+    * Other bodies also specify standards for network components, e.g., the IEEE 802 LAN Standards Committee.
 
-#### Services Description
+### The Network Edge
 
-* The Internet is an **infrastructure** that provides services to **distributed applications**.
-* Internet applications run on **end systems**. They do **not** run on packet switches.
-* End systems provide a **socket interface**. This defines how applications request data delivery.
-* The Internet provides **multiple services** to its applications.
-
-#### What is a Protocol?
-
-* Two or more entities need to run the same **protocol** to accomplish a task.
-* **Human protocols** involve specific messages and actions based on replies or events.
-* This course focuses on **computer network protocols**.
-* A **protocol** defines the format and order of messages exchanged between entities, as well as actions taken during transmission and reception.
-
-#### The Network Edge
-
-* **End Systems:** 
-    * Include **desktop computers** (PCs, Macs, Linux boxes), **servers** (Web, email), and **mobile devices** (laptops, smartphones, tablets).
-    * Also include **"things"** (non-traditional devices) connected to the Internet.
-    * End systems are also known as **hosts** because they host application programs.
-    * Hosts are categorized as **clients** and **servers**.
-    * Most servers reside in **data centers**. Google has 19 data centers worldwide, containing millions of servers.
+* The Internet's **end systems** include desktop computers (e.g., desktop PCs, Macs, and Linux boxes), servers (e.g., Web and e-mail servers), and mobile devices (e.g., laptops, smartphones, and tablets). Furthermore, an increasing number of non-traditional "things" are being attached to the Internet as end systems.
+* End systems are also referred to as **hosts** because they host (that is, run) application programs.
+* Hosts are sometimes further divided into two categories: **clients** and **servers**.
+* Most of the servers reside in large **data centers**.
+    * For example, as of 2020, Google has 19 data centers on four continents, collectively containing several million servers.
 
 #### Access Networks
 
-* **Home Access:**
-    * **DSL (Digital Subscriber Line):** Uses existing telephone lines. Requires a **DSL modem** and **DSLAM (Digital Subscriber Line Access Multiplexer)** in the telco's central office (CO).
-        * Downstream rates: 24 Mbps and 52 Mbps.
-        * Upstream rates: 3.5 Mbps and 16 Mbps.
-        * Newest standard: 1 Gbps.
-    * **Cable Internet:** Utilizes existing cable television infrastructure.
-        * Downstream rates: 40 Mbps and 1.2 Gbps.
-        * Upstream rates: 30 Mbps and 100 Mbps.
-    * **Fiber to the Home (FTTH):** Provides very high speeds in the gigabit per second range.
-    * **5G Fixed Wireless:**  Offers high-speed access without requiring physical cabling.
+* **Home Access:** DSL, Cable, FTTH, and 5G Fixed Wireless
+* **Access in the Enterprise (and the Home):** Ethernet and WiFi
+* **Wide-Area Wireless Access:** 3G and LTE 4G and 5G
 
-* **Enterprise/Home Access:**
-    * **Ethernet:** Uses twisted-pair copper wire to connect to an **Ethernet switch**.
-        * Users typically have 100 Mbps to tens of Gbps access.
-        * Servers may have 1 Gbps to 10 Gbps access.
-    * **WiFi (Wireless Fidelity):**  Based on IEEE 802.11 technology.
-        * Requires a **WiFi access point** and a **home router**.
-        * Shared transmission rate: Up to over 100 Mbps.
+##### Home Access: DSL
 
-* **Wide-Area Wireless Access:**
-    * **3G, LTE 4G, and 5G:** Uses cellular telephony infrastructure.
-        * Requires a **base station**.
-        * 4G: Download speeds up to 60 Mbps.
-        * 5G: Even higher speeds.
+* When **digital subscriber line (DSL)** is used, a customer's telco is also its ISP.
+* A DSL modem uses the existing telephone line to exchange data with a **digital subscriber line access multiplexer (DSLAM)** located in the telco's local central office (CO).
+* The residential telephone line carries both data and traditional telephone signals simultaneously, which are encoded at different **frequencies**:
+    * A high-speed downstream channel, in the 50 kHz to 1 MHz band
+    * A medium-speed upstream channel, in the 4 kHz to 50 kHz band
+    * An ordinary two-way telephone channel, in the 0 to 4 kHz band
+* On the customer side, a **splitter** separates the data and telephone signals arriving to the home and forwards the data signal to the DSL modem.
+* On the telco side, in the CO, the **DSLAM** separates the data and phone signals and sends the data into the Internet.
+    * Hundreds or even thousands of households connect to a single DSLAM.
+    * Downstream transmission rates of **24 Mbps** and **52 Mbps**
+    * Upstream rates of **3.5 Mbps** and **16 Mbps**
+    * The newest standard provides for aggregate upstream plus downstream rates of **1 Gbps**.
+* DSL is designed for short distances between the home and the CO.
+    * Located within **5 to 10 miles** of the CO. (1 mile=1.6 km)
 
-#### Physical Media
+##### Other Home Access
 
-* Bits travel through a series of transmitter-receiver pairs using a **physical medium**.
-* Physical media are classified as **guided** or **unguided**:
-    * **Guided Media:** Electromagnetic waves or optical pulses travel through a solid medium, such as fiber-optic cables, twisted-pair copper wire, or coaxial cables.
-    * **Unguided Media:** Waves propagate through the atmosphere or outer space, such as in wireless LANs or satellite channels.
+* **Cable Internet access** makes use of the cable television company's existing cable television infrastructure.
+    * It is often referred to as hybrid fiber coax (HFC) and is a shared broadcast medium.
+    * Downstream bitrates of **40 Mbps** and **1.2 Gbps**, and upstream rates of **30 Mbps** and **100 Mbps**.
+* **Fiber to the home (FTTH)** provides even higher speeds is that can potentially provide Internet access rates in the gigabits per second range.
+* **5G fixed wireless** promises high-speed residential access, without installing costly and failure-prone cabling from the telco's CO to the home.
 
-#### The Network Core
+##### Access in the Enterprise/Home: Ethernet
 
-* The network core consists of **packet switches** (primarily **routers**).
-* Routers are connected to the network edge through **access networks**.
+* A **local area network (LAN)** is used to connect an end system to the edge router. Ethernet users use twisted-pair copper wire to connect to an **Ethernet switch**.
+* With Ethernet access:
+    * Users typically have **100 Mbps to tens of Gbps** access to the Ethernet switch
+    * Servers may have **1 Gbps to 10 Gbps** access
 
-#### Packet Switching
+##### Access in the Enterprise/Home: WiFi
 
-* End systems exchange **messages**.
-* Messages are divided into **packets**.
-* Packets travel through **communication links** and **packet switches**.
-* Most packet switches use **store-and-forward transmission**. They receive the entire packet before forwarding it.
-* **Output buffers/queues** store packets waiting to be sent on a specific link.
-* Packets experience **store-and-forward delay** and **queuing delay**. Queuing delay depends on the level of **congestion**.
-* **Packet loss** can occur if the buffer space is full, resulting in a dropped packet.
+* Wireless LAN access based on IEEE 802.11 technology (**WiFi**) is now just about everywhere.
+* A wireless LAN user must typically be within **a few tens of meters** of the access point.
+* 802.11 today provides a shared transmission rate of up to more than **100 Mbps**.
+* **e.g. home network:**
+    * a roaming laptop, multiple home appliances, as well as a wired PC
+    * a base station (**WiFi access point**) that communicates with the wireless PC and other wireless devices in the home
+    * a **home router** that connects the wireless access point, and any other wired home devices, to the Internet.
 
-#### Forwarding Tables and Routing Protocols
+### The Network Core
 
-* Routers use **forwarding tables** to determine the appropriate outgoing link for a packet.
-* **IP addresses** are used to identify hosts and have a hierarchical structure.
-* The destination's **IP address** is included in the packet header.
-* **Routing protocols** are used to automatically set up forwarding tables.
+* **Packet Switching:**
+    * In a network application, end systems exchange **messages** with each other.
+    * The source breaks long messages into smaller chunks of data known as **packets**.
+    * Each packet travels through communication links and **packet switches**.
+        * **Routers** and **link-layer switches**
+        * A router will typically have many incident links
+    * Most packet switches use **store-and-forward transmission** at the inputs to the links. That is it must receive the entire packet before it can begin to transmit the first bit of the packet onto the outbound link.
+    * Each packet consisting of L bits; Transmission rate is R bits/sec.
+    * Sending one packet from source to destination over a path consisting of N links (N - 1 routers) each of rate R, the delay
+        * *dend-to-end = NL/R* (ignoring propagation delay)
+    * For each attached link, the packet switch has an **output buffer/queue**, which stores packets that the router is about to send into that link.
+    * In addition to the store-and-forward delays, packets suffer output buffer **queuing delays**
+        * That depend on the level of congestion in the network
+    * The amount of buffer space is finite, therefore **packet loss** will occur-either the arriving packet or one of the already-queued packets will be dropped
 
-#### Circuit Switching
+* **Circuit Switching:**
+    * Traditional **telephone networks** are examples of circuit-switched networks.
+    * In **circuit-switched networks**, the resources needed along a path (buffers, link transmission rate) are **reserved** for the duration of the communication session between the end systems.
+    * When two hosts want to communicate, the network establishes a dedicated **end-to-end connection** between the two hosts.
+        * The sender can transfer the data to the receiver at the **guaranteed** constant rate.
+    * The Internet makes its **best effort** to deliver packets in a timely manner, but it does not make any guarantees.
 
-* **Traditional telephone networks** are circuit-switched networks.
-* **Circuit-switched networks** reserve resources (buffers, transmission rate) along a path for the duration of a communication session.
-* A dedicated **end-to-end connection** is established between hosts.
-* The sender can transmit data at a **guaranteed constant rate**.
-* The Internet uses a **best-effort** approach to deliver packets, without guarantees.
+* **Multiplexing in Circuit-Switched Networks:**
+    * A circuit in a link is implemented with either **frequency-division multiplexing (FDM)** or **time-division multiplexing (TDM)**.
+    * **e.g.:**
+        * FM radio stations use FDM to share the frequency spectrum between 88 MHz and 108 MHz, with each station being allocated a specific frequency band.
+        * For a TDM link, time is divided into frames of fixed duration, and each frame is divided into a fixed number of time slots.
+    * Circuit switching is wasteful because the dedicated circuits are idle during silent periods.
+    * Establishing end-to-end circuits is complicated and requires **complex signaling software** to coordinate the operation of the switches along the end-to-end path
 
-#### Multiplexing in Circuit-Switched Networks
+### Delay, Loss, and Throughput
 
-* **Frequency-division multiplexing (FDM)** and **time-division multiplexing (TDM)** are used to share a link between multiple connections.
-* **FDM:** Each connection gets a dedicated frequency band.
-* **TDM:** Time is divided into frames, and each frame is further divided into slots. Each connection gets a dedicated slot within each frame.
+* **Overview:**
+    * The physical laws introduce **delay** and **loss** as well as constrain **throughput**.
+        * **Throughput** is the amount of data per second that can be transferred between end systems
+    * The packet suffers from several **types of delays** at each node along the path.
+        * **Processing delay** (microseconds or less)
+        * **Queuing delay** (microseconds to milliseconds) (depend on the number of earlier-arriving packets)
+        * **Transmission delay** is L/R (packet length L bits; R transmission rate in bps) (amount of time required to push all of the packet's bits into the link)
+        * **Propagation delay** (d/s distance between two routers divided by the propagation speed) (depends on the physical medium) (milliseconds)
+            * 2 × 108 meters/sec to 3 × 108 meters/sec
 
-#### Packet Switching vs. Circuit Switching
+* **Nodal Delay:**
+    * *dnodal = dproc + dqueue + dtrans + dprop*
+    * The contribution of these delay components can vary significantly.
+        * **e.g. LAN:** *dprop* is negligible
+        * **e.g. routers interconnected by a geostationary satellite link:** *dprop* is hundreds of milliseconds (dominant)
+    * The processing delay, *dproc*, is often negligible
+        * However, it strongly influences a router's maximum throughput
 
-* **Packet switching:**
-    * **Advantages:** Better sharing of transmission capacity, simpler and more efficient implementation, and lower cost.
-    * **Disadvantage:** Not suitable for real-time services.
-* **Circuit switching:**
-    * **Advantages:**  Guaranteed constant rate.
-    * **Disadvantages:**  Pre-allocates resources, wasting unused time, and is more complex.
+* **Queuing Delay and Packet Loss:**
+    * The queuing delay can vary from packet to packet (uses **statistical measures** such as average, variance, probability).
+    * Queuing delay depends on:
+        * The rate at which traffic arrives (a packets/sec) (assume each is L bits),
+        * The transmission rate of the link (Rbps), and
+        * The nature of the arriving traffic (periodically or in bursts; or random).
+    * **Traffic intensity = La/R**
+        * If La/R > 1 the queue will tend to increase without bound and the queuing delay will approach infinity!
+    * La/R < 1: the nature of the arriving traffic impacts the queuing delay.
+        * If packets arrive periodically, then every packet will arrive at an empty queue and there will be no queuing delay.
+        * If packets arrive in bursts but periodically, there can be a significant average queuing delay.
+            * **e.g. N packets arrive simultaneously every (L/R)N seconds, nth packet transmitted has a queuing delay of (n - 1)L/R seconds.**
+    * A small percentage increase in the intensity will result in a much larger percentage-wise increase in delay.
+    * Performance at a node is often measured not only in terms of **delay**, but also in terms of the probability of **packet loss**.
 
-#### A Network of Networks
+* **End-to-End Delay:**
+    * Assume, N - 1 routers, no queuing delay: *dend-to-end = N(dproc + dtrans + dprop)*
+    * **Traceroute** is a simple program, when the user specifies a destination hostname, the program in the source host sends multiple, special packets toward that destination. (graphical interface **PingPlotter**)
+        * The source sends 3 × N packets to the destination.
+        * As these packets work their way toward the destination, they pass through a series of routers.
+        * When a router receives one of these special packets, it sends back to the source a short message that contains the **name and address of the router**.
+        * The source can reconstruct the route taken by packets flowing from source to destination, and the source can determine the **round-trip delays** to all the intervening routers.
 
-* The Internet has evolved into a **complex network of networks**.
-* This evolution is driven by **economics** and **national policy**.
-* **Network Structures:**
-    * **Structure 1:** Single global transit ISP connecting all access ISPs (expensive).
-    * **Structure 2:** Two-tier hierarchy, with multiple global transit ISPs competing for access ISPs.
-    * **Structure 3:** Multi-tier hierarchy, with regional ISPs connecting access ISPs within a region.
-    * **Structure 4:**  Adds **Points of Presence (PoPs)**, **multi-homing**, and **peering** to the hierarchy.
-    * **Structure 5:** Builds on Structure 4 and includes **content-provider networks**.
+* **Additional Delays:**
+    * Delay of the transmission as part of its protocol for sharing the medium with other end systems as in a **WiFi**.
+    * **Packetization delay** (to fill a packet), which is present in **Voice-over-IP (VoIP)** applications.
 
-#### Delay, Loss, and Throughput
-
-* **Delay:**
-    * **Processing delay:**  Microseconds or less.
-    * **Queuing delay:** Microseconds to milliseconds, depending on the number of packets waiting.
-    * **Transmission delay:** L/R (packet length divided by transmission rate).
-    * **Propagation delay:** d/s (distance divided by propagation speed).
-    * **Nodal delay:** The sum of all delay components at a node.
-* **Loss:**
-    * Packets can be dropped if the buffer is full.
-    * **Packet loss** is dependent on **traffic intensity** and the **nature of the arriving traffic**.
 * **Throughput:**
-    * The amount of data transferred per second.
-    * **Bottleneck links** limit throughput.
-    * In the core of the Internet, throughput is limited by **access networks**.
+    * Use the **speedtest** application to measure the end-to-end delay and download throughput between a host and servers.
+    * If a file consists of F bits and the transfer takes T seconds for Host B to receive all F bits, then the **average throughput** of the file transfer is F/T bits/sec.
+    * We may think of bits as **fluid** and communication links as **pipes**.
+    * In a simple two-link network, the throughput is *min{Rc, Rs}*, that is, it is the transmission rate of the **bottleneck link**.
+    * For a network with N links between the server and the client, with the transmission rates of the N links being R1, R2, ..., RN. The throughput for a file transfer from server to client is *min{R1, R2, ..., RN}*.
+    * When there is **no other intervening traffic**, the throughput can simply be approximated as the minimum transmission rate along the path between source and destination.
+    * Links in the **core** of the communication network have very high transmission rates.
+    * The constraining factor for throughput in today's Internet is typically the **access network**.
 
-#### Protocol Layers
+### Protocol Layers
 
-* Network protocols are organized into **layers**.
-* Layers provide services by performing certain actions and utilizing services from lower layers.
-* **Layers:**
-    * **Application Layer:**  Where network applications and their protocols reside.
-    * **Transport Layer:** Transports application messages between endpoints.
-        * **UDP:**  Connectionless service.
-        * **TCP:** Connection-oriented service with guaranteed delivery, flow control, and congestion control.
-    * **Network Layer:** Moves network packets (datagrams) between hosts.
-        * Contains **routing protocols**.
-    * **Link Layer:** Delivers datagrams to the next node along the route.
-        * Uses different link-layer protocols for different links.
-    * **Physical Layer:** Moves individual bits within a frame between nodes.
-        * Dependent on the transmission medium.
+* **Layered Architecture:**
+    * There are **many pieces** to the Internet: numerous applications and protocols, various types of end systems, packet switches, and various types of link-level media.
+    * Given this **enormous complexity**, is there any hope of organizing a network architecture, or at least our discussion of network architecture?
+    * A **layered architecture** allows us to discuss a well-defined, specific part of a large and complex system.
+        * Each layer provides its service by performing certain actions and using the services of the layer directly below it.
+        * **Modularity** makes it much easier to change the **implementation** of the service provided by a layer without affecting other components.
 
-#### Encapsulation
+* **Protocol Layering:**
+    * Network designers organize protocols in **layers**.
+    * A protocol layer can be implemented in software, in hardware, or in a combination of the two.
+        * **Application-layer** protocols are almost always implemented in software and so are **transport-layer** protocols.
+        * The **physical layer** and **data link layers** are responsible for handling communication over a specific link, they are typically implemented in a network interface card.
+        * The **network layer** is often a mixed implementation of hardware and software.
+    * Potential **drawbacks** of layering is that one layer may duplicate lower-layer functionality and the functionality at one layer may need information that is present only in another layer.
+    * The **application layer** is where network applications and their application-layer protocols reside.
+        * With the application in one end system using the protocol to exchange packets of information (called **messages**) with the application in another end system.
+            * **e.g. HTTP, SMTP, FTP, DNS**
+    * The **transport layer** transports application-layer messages between application endpoints. (a transport-layer packet is refered as a **segment**)
+        * The **UDP protocol** provides a connectionless service to its applications.
+        * **TCP** provides a connection-oriented service to its applications: guaranteed delivery; flow control; congestion-control.
+    * The **network layer** (IP layer) is responsible for moving network-layer packets known as **datagrams** from one host to another.
+        * IP protocol defines the fields in the datagram as well as how the end systems and routers act on these fields.
+        * This layer contains **routing protocols** that determine the routes that datagrams take between sources and destinations.
+    * The **link layer** delivers the datagram to the next node along the route. At this next node, the link layer passes the datagram **up** to the network layer.
+        * A datagram may be handled by **different** link-layer protocols at different links along its route.
+        * The link-layer packets are refereed as **frames**.
+            * **e.g. Ethernet, WiFi**
+    * The job of the **physical layer** is to move the **individual bits** within the frame from one node to the next.
+        * Depends on the actual transmission medium of the link.
+            * **e.g. Ethernet** has many physical-layer protocols: one for twisted-pair copper wire, another for coaxial cable, another for fiber, and so on.
 
-* Layers encapsulate information from higher layers.
-* **Application Layer:** Messages are encapsulated into **transport-layer segments**.
-* **Transport Layer:** Segments are encapsulated into **network-layer datagrams**.
-* **Network Layer:** Datagrams are encapsulated into **link-layer frames**.
+* **Encapsulation:**
+    * The transport layer takes the **message** and appends additional information. The **transport-layer segment encapsulates** the application-layer message.
+    * The network layer adds network-layer header information such as source and destination end system addresses, creating a **network-layer datagram**.
+    * The datagram is then passed to the link layer, which (of course!) will add its own link-layer header information and create a **link-layer frame**.
 
-* This layered architecture is used by hosts, routers, and link-layer switches, with each having its own specific layers.
+## Summary
 
-#### Summary
-
-* This lecture covered the fundamentals of computer networks, including the Internet's structure, how data is transmitted, and the different types of delays and throughput.
-* The lecture also introduced the concept of protocol layering and how it helps organize network protocols.
-* The key takeaways are:
-    * The Internet is a network of networks.
-    * Packet switching is more efficient than circuit switching but not suitable for real-time services.
-    * Network performance is affected by delays, loss, and throughput.
-    * Protocol layers provide a structured approach to designing and implementing network protocols.
+* What Is the Internet?
+* The Network Edge
+* The Network Core
+* Delay, Loss, and Throughput in Packet-Switched Networks
+* Protocol Layers and Their Service Models
