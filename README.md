@@ -9,7 +9,6 @@ This is a simple assistant for CSED students to help them with their studies. It
 pip install -r requirements.txt
 ```
 3. Add gemini api key to `.env`, you can get free api key from [Gemini Studio](https://aistudio.google.com/app/apikey)
-```bash
 
 ## Usage
 Run the following command to start the assistant
