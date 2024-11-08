@@ -11,15 +11,18 @@ pip install -r requirements.txt
 3. Add gemini api key to `.env`, you can get free api key from [Gemini Studio](https://aistudio.google.com/app/apikey)
 
 ## Usage
-Run the following command to start the assistant
+- Run the following command to start the assistant
 ```bash
 python summarize.py {path to the lecture file("lect1.pdf")}
 ```
 This will make summarization in md format and pdf.
+
 - You can add your own **edits** to markdown file and export it as pdf using command:
 ```bash
 mdpdf -o summary.pdf summary.md
 ```
+
+- You can add your own prompt by editing `prompt.txt`
 
 ## Testing
 You can find test results in `test/`

@@ -3,4 +3,5 @@ Don't miss any important detail. Give me the all points structured in good secti
 Things to keep attention for:
 - Equations
 - Tricky/Edge cases
+- Extract information and equations summary from any examples
 - Any information may be in exam
