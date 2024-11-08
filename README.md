@@ -17,5 +17,8 @@ python summarize.py {path to the lecture file("lect1.pdf")}
 ```
 This will make summarization in md format and pdf.
 
+## Testing
+You can find test results in `test/`
+
 ## Disclaimer
 This is a simple tool and may not work perfectly for all lectures. It is recommended to review the output and make necessary changes.
