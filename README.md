@@ -27,7 +27,15 @@ mdpdf -o summary.pdf summary.md
 ## Testing
 You can find test results in `test/`
 
+## Future Work
+- Adding Web interface for chatting and uploading documents
+- Follow up questions on the uploaded document for more clarifications
+- Follow up editing requests
+
+## Contribution
+You are highly encouraged to fork the repo and make pull requests with new features
+
 ## Disclaimer
-This is a simple tool and may not work perfectly for all lectures. It is recommended to review the output and make necessary changes.
+This is a simple tool and may not work perfectly for all documents. It is recommended to review the output and make necessary changes.
 
 **Enjoy!**
